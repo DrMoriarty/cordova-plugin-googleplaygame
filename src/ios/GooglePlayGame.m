@@ -1,7 +1,7 @@
 #import <GoogleOpenSource/GoogleOpenSource.h>
 #import "AppDelegate.h"
 //#import "objc/runtime.h"
-#import "GooglePlus.h"
+#import "GooglePlayGame.h"
 
 // need to swap out a method, so swizzling it here
 static void swizzleMethod(Class class, SEL destinationSelector, SEL sourceSelector);
@@ -37,7 +37,7 @@ static void swizzleMethod(Class class, SEL destinationSelector, SEL sourceSelect
                      openURL: (NSURL *)url
            sourceApplication: (NSString *)sourceApplication
                   annotation: (id)annotation {
-    GooglePlus* gp = (GooglePlus*)[[self.viewController pluginObjects] objectForKey:@"GooglePlus"];
+    GooglePlayGame* gp = (GooglePlayGame*)[[self.viewController pluginObjects] objectForKey:@"GooglePlayGame"];
     
     if ([gp isSigningIn]) {
         gp.isSigningIn = NO;
@@ -51,7 +51,7 @@ static void swizzleMethod(Class class, SEL destinationSelector, SEL sourceSelect
 
 @end
 
-@implementation GooglePlus
+@implementation GooglePlayGame
 
 // If this returns false, you better not call the login function because of likely app rejection by Apple,
 // see https://code.google.com/p/google-plus-platform/issues/detail?id=900

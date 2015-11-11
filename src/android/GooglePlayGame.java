@@ -1,4 +1,4 @@
-package nl.xservices.plugins;
+package ru.orangeapps.googleplaygame;
 
 import android.app.Activity;
 import android.app.PendingIntent;
@@ -28,7 +28,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GooglePlus extends CordovaPlugin implements ConnectionCallbacks, OnConnectionFailedListener {
+public class GooglePlayGame extends CordovaPlugin implements ConnectionCallbacks, OnConnectionFailedListener {
 
   public static final String ACTION_IS_AVAILABLE = "isAvailable";
   public static final String ACTION_LOGIN = "login";
@@ -182,24 +182,24 @@ public class GooglePlus extends CordovaPlugin implements ConnectionCallbacks, On
         String token;
 
         try {
-          if (GooglePlus.this.webKey != null){
+          if (GooglePlayGame.this.webKey != null){
             // Retrieve server side tokens
-            scope = "audience:server:client_id:" + GooglePlus.this.webKey;
+            scope = "audience:server:client_id:" + GooglePlayGame.this.webKey;
             token = GoogleAuthUtil.getToken(context, email, scope);
             result.put("idToken", token);
           }
 
           // if API key or offline flag is set, then also get the OAuth access token
-          if (GooglePlus.this.apiKey != null) {
+          if (GooglePlayGame.this.apiKey != null) {
             // Retrieve the oauth token with offline mode
-            scope = "oauth2:server:client_id:" + GooglePlus.this.apiKey;
-            scope += ":api_scope:" + GooglePlus.this.scopesString;
+            scope = "oauth2:server:client_id:" + GooglePlayGame.this.apiKey;
+            scope += ":api_scope:" + GooglePlayGame.this.scopesString;
             token = GoogleAuthUtil.getToken(context, email, scope);
             // Since this is a short-lived one time token immediately remove it from
             // the cache. This ensures a new token each time the user authenticates.
             GoogleAuthUtil.clearToken(context, token);
             result.put("oauthToken", token);
-          } else if(GooglePlus.this.requestOfflineToken) {
+          } else if(GooglePlayGame.this.requestOfflineToken) {
             // Retrieve the oauth token with offline mode
             scope = "oauth2:" + Scopes.PLUS_LOGIN;
             token = GoogleAuthUtil.getToken(context, email, scope);
@@ -209,7 +209,7 @@ public class GooglePlus extends CordovaPlugin implements ConnectionCallbacks, On
         catch (UserRecoverableAuthException userAuthEx) {
           // Start the user recoverable action using the intent returned by
           // getIntent()
-          cordova.setActivityResultCallback(GooglePlus.this);
+          cordova.setActivityResultCallback(GooglePlayGame.this);
           cordova.getActivity().startActivityForResult(userAuthEx.getIntent(), /*requestCode*/0);
           return;
         }

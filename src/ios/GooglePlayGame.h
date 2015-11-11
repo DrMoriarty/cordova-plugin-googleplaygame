@@ -3,7 +3,7 @@
 //#import <Foundation/Foundation.h>
 #import <GoogleSignIn/GoogleSignIn.h>
 
-@interface GooglePlus : CDVPlugin<GIDSignInDelegate, GIDSignInUIDelegate>
+@interface GooglePlayGame : CDVPlugin<GIDSignInDelegate, GIDSignInUIDelegate>
 
 @property (nonatomic, copy) NSString* callbackId;
 @property (nonatomic, assign) BOOL isSigningIn;

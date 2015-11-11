@@ -1,42 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
         xmlns:android="http://schemas.android.com/apk/res/android"
-        id="cordova-plugin-googleplus"
-        version="4.0.4">
+        id="ru.orangeapps.cordova-plugin-googleplaygame"
+        version="0.1">
 
-  <name>Google+</name>
+  <name>GooglePlayGame</name>
 
-  <description>Use your Google account to authenticate with the app.</description>
+  <description>Use Google Play Game services.</description>
 
-  <author>Eddy Verbruggen</author>
+  <author>DrMoriarty</author>
 
   <license>MIT</license>
 
-  <keywords>Google, Google+, GooglePlus, Google Plus, Google Login, Login, OAuth</keywords>
+  <keywords>Google, Google Game, GoogleGame, Google Play, GooglePlay, GooglePlayGame, Google Login, Login, OAuth</keywords>
 
-  <repo>https://github.com/EddyVerbruggen/cordova-plugin-googleplus.git</repo>
+  <repo>https://github.com/DrMoriarty/cordova-plugin-googleplaygame.git</repo>
 
-  <issue>https://github.com/EddyVerbruggen/cordova-plugin-googleplus/issues</issue>
+  <issue>https://github.com/DrMoriarty/cordova-plugin-googleplaygame/issues</issue>
 
   <engines>
     <engine name="cordova" version=">=3.3.0"/>
   </engines>
 
-  <js-module src="www/GooglePlus.js" name="GooglePlus">
-    <clobbers target="window.plugins.googleplus" />
+  <js-module src="www/GooglePlayGame.js" name="GooglePlayGame">
+    <clobbers target="window.plugins.googleplaygame" />
   </js-module>
 
   <!-- android -->
   <platform name="android">
 
     <!-- these give a lot of peeps trouble, esp on build.phonegap.com, so not using them -->
-    <framework src="com.google.android.gms:play-services-plus:+" />
-    <framework src="com.google.android.gms:play-services-identity:+" />
+    <framework src="com.google.android.gms:play-services-plus:8.3.0" />
+    <framework src="com.google.android.gms:play-services-auth:8.3.0" />
+    <framework src="com.google.android.gms:play-services-identity:8.3.0" />
+    <framework src="com.google.android.gms:play-services-appinvite:8.3.0" />
+    <framework src="com.google.android.gms:play-services-games:8.3.0" />
     <!--<dependency id="cordova-plugin-googleplayservices" />-->
 
     <config-file target="res/xml/config.xml" parent="/*">
-      <feature name="GooglePlus">
-        <param name="android-package" value="nl.xservices.plugins.GooglePlus" />
+      <feature name="GooglePlayGame">
+        <param name="android-package" value="ru.orangeapps.googleplaygame.GooglePlayGame" />
         <param name="onload" value="true" />
       </feature>
       <access origin="https://accounts.google.com/*" />
@@ -47,22 +50,22 @@
       <uses-permission android:name="android.permission.USE_CREDENTIALS" />
     </config-file>
 
-    <source-file src="src/android/GooglePlus.java" target-dir="src/nl/xservices/plugins"/>
+    <source-file src="src/android/GooglePlayGame.java" target-dir="ru/orangeapps/googleplaygame"/>
   </platform>
 
   <!-- ios -->
   <platform name="ios">
 
     <config-file target="config.xml" parent="/*">
-      <feature name="GooglePlus">
-        <param name="ios-package" value="GooglePlus"/>
+      <feature name="GooglePlayGame">
+        <param name="ios-package" value="GooglePlayGame"/>
         <param name="onload" value="true" />
       </feature>
       <access origin="https://accounts.google.com/*" />
     </config-file>
 
-    <header-file src="src/ios/GooglePlus.h"/>
-    <source-file src="src/ios/GooglePlus.m"/>
+    <header-file src="src/ios/GooglePlayGame.h"/>
+    <source-file src="src/ios/GooglePlayGame.m"/>
 
     <preference name="REVERSED_CLIENT_ID"/>
 
