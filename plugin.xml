@@ -50,7 +50,7 @@
       <uses-permission android:name="android.permission.USE_CREDENTIALS" />
     </config-file>
 
-    <source-file src="src/android/GooglePlayGame.java" target-dir="ru/orangeapps/googleplaygame"/>
+    <source-file src="src/android/GooglePlayGame.java" target-dir="src/ru/orangeapps/googleplaygame"/>
   </platform>
 
   <!-- ios -->
