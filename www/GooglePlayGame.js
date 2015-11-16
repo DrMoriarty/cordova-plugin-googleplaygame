@@ -21,6 +21,10 @@ GooglePlayGame.prototype.disconnect = function (successCallback, errorCallback) 
   cordova.exec(successCallback, errorCallback, "GooglePlayGame", "disconnect", []);
 };
 
+GooglePlayGame.prototype.invite = function (options, successCallback, errorCallback) {
+    cordova.exec(successCallback, errorCallback, "GooglePlayGame", "invite", [options]);
+};
+
 GooglePlayGame.install = function () {
   if (!window.plugins) {
     window.plugins = {};
